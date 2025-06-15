@@ -1,4 +1,6 @@
-public class Maquina {
+package resolucionTPE;
+
+public class Maquina implements Comparable<Maquina>{
     private String nombre;
     private int piezas;
 
@@ -16,5 +18,8 @@ public class Maquina {
     @Override
     public String toString() {
         return nombre + " (" + piezas + ")";
+    }
+    public int compareTo(Maquina m) {//compara las maquinas de mayor a menor por produccion de piezas
+    	return m.piezas - this.piezas; 
     }
 }

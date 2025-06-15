@@ -1,11 +1,12 @@
+package resolucionTPE;
 import java.util.*;
-public class BacktrackingSolver {
+public class Backtracking {
     private List<Maquina> maquinas;
     private int objetivo;
     private Solucion mejorSolucion;
     private int estadosGenerados;
 
-    public BacktrackingSolver(List<Maquina> maquinas, int objetivo){
+    public Backtracking(List<Maquina> maquinas, int objetivo){
       this.maquinas = maquinas;
       this.objetivo = objetivo;
       this.mejorSolucion = null;
