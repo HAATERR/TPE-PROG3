@@ -24,15 +24,24 @@ Analizamos el problema:
 
 - Como necesitamos conseguir usar la menor cantidad de maquinas posibles para producir el pedido de piezas, es necesario ordenar la lista de maquinas de mayor a menor considerando la cantidad de piezas que producen. Esto nos garantiza que siempre seleccionemos la maquina mas productiva, pudiendo llegar a la cantidad de piezas necesarias mas rapido
 
-### Solucion con Backtracking
+### Solución con Backtracking
 
-***Solucion optima*** cuando la suma de las piezas que producen las maquinas agregadas a la solucion es igual al objetivo de piezas necesarias, se la compara con la mejor solucion encontrada hasta el momento. En el caso de que la nueva solucion tenga menor costo, se la guarda como la mejor solucion, y si no lo es, se la descarta
+La estrategia de resolución consiste en construir todas las combinaciones posibles de activaciones de máquinas utilizando búsqueda en profundidad (DFS), aplicando poda para evitar ramas innecesarias.
 
-- ***Caso ideal:*** suma == objetivo y nuevaSolucion.costo < mejorSolucion.costo
-  
-Tenemos 2 podas: 
+Se considera una **solución óptima** cuando la suma de las piezas producidas por las máquinas activadas es *exactamente igual al objetivo*, y además *tiene menor costo* que la mejor solución encontrada hasta el momento. Si cumple estas condiciones, se guarda como nueva mejor solución, si no, se descarta.
 
-- **Poda por Exceso:** cuando la suma de piezas ya superó el objetivo se descarta, ya que las piezas no pueden disminuir
-- **Poda de Optimización:** Si el costo (cant de activaciones) de la nueva solucion iguala o excede el costo de la mejor solucion encontrada hasta el momento, se descarta, esa solucion ya no puede ser mejor a la que tenemos
+Esta estrategia permite recorrer únicamente las ramas prometedoras del árbol de decisiones, mejorando el rendimiento sin afectar la corrección del algoritmo.
+
+#Condición de solución ideal:
+- `suma == objetivo` **y** `activaciones < mejorSolucion.activaciones`
+
+#Se aplican dos podas principales:
+
+- **Poda por exceso:**  
+  Si la suma parcial de piezas supera el objetivo, la rama se descarta directamente, ya que no se pueden restar piezas.
+
+- **Poda por optimización:**  
+  Si la cantidad de activaciones ya iguala o supera la cantidad de activaciones de la mejor solución encontrada, también se descarta, porque no puede mejorar el resultado.
+
 
 

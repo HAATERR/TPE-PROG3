@@ -1,5 +1,21 @@
 package resolucionTPE;
 import java.util.*;
+
+/*
+ * - El árbol de exploración se genera combinando todas las posibles activaciones de máquinas.
+ *   Cada nodo representa un estado parcial: una secuencia de activaciones y su suma de piezas.
+ *   Desde cada nodo, se ramifica agregando una nueva activación, puede repetir.
+ * - Un estado final es aquel cuya suma total de piezas es igual al objetivo.
+ *   Un estado solución es aquel que alcanza el objetivo con la menor cantidad de activaciones posibles.
+ * - Se aplican dos podas principales para reducir el espacio de búsqueda:
+ *     1.Poda por exceso: si la suma parcial supera el objetivo, se descarta la rama.
+ *     2.Poda por menos óptima: si la cantidad de activaciones ya es igual o mayor que la mejor solución encontrada hasta el momento, se corta la exploración.
+ * - Se utiliza DFS, explorando todas las combinaciones posibles en orden recursivo.
+ * - Se cuenta la cantidad de estados generados para medir el costo computacional del algoritmo.
+ */
+
+
+
 public class Backtracking {
     private List<Maquina> maquinas;
     private int objetivo;
